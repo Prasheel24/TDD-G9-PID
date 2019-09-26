@@ -1,11 +1,8 @@
-<<<<<<< HEAD
-# PID Controller - Acme Robotics
-=======
-# C++ Boilerplate
-[![Build Status](https://travis-ci.org/suyash023/cpp-boilerplate.svg?branch=master)](https://travis-ci.org/suyash023/cpp-boilerplate)
 [![Coverage Status](https://coveralls.io/repos/github/suyash023/cpp-boilerplate/badge.svg?branch=master)](https://coveralls.io/github/suyash023/cpp-boilerplate?branch=master)
----
->>>>>>> 7df24f7b8ed849d255376eb4ede5277669d72b30
+
+[![Build Status](https://travis-ci.org/suyash023/cpp-boilerplate.svg?branch=master)](https://travis-ci.org/suyash023/cpp-boilerplate)
+
+# PID Controller - Acme Robotics
 
 ## Author names for Part 1
 
@@ -13,11 +10,11 @@ Driver: Prasheel Renkuntla
 	
 Navigator: Suyash Yeotikar
 
-##Overview
+## Overview
 
 Test Driven development for the PID Controller designed for Acme Robotics.
 
-##TODO
+## TODO
 
 1. Create skeleton for the code implementation.
 
