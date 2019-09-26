@@ -1,11 +1,5 @@
-<<<<<<< HEAD
+
 # PID Controller - Acme Robotics
-=======
-# C++ Boilerplate
-[![Build Status](https://travis-ci.org/suyash023/cpp-boilerplate.svg?branch=master)](https://travis-ci.org/suyash023/cpp-boilerplate)
-[![Coverage Status](https://coveralls.io/repos/github/suyash023/cpp-boilerplate/badge.svg?branch=master)](https://coveralls.io/github/suyash023/cpp-boilerplate?branch=master)
----
->>>>>>> 7df24f7b8ed849d255376eb4ede5277669d72b30
 
 ## Author names for Part 1
 
