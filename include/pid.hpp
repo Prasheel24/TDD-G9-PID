@@ -32,154 +32,123 @@ class PIDController {
  private:
 
   /* Declaration of different PID gain factors  */
-  std::vector<double> Kp, Ki, Kd;
+  std::vector<double> Kp = std::vector<double>(3, 0.0);
 
-  /* Declaration of target set point */
-  std::vector<double> targetSetPoint;
+  std::vector<double> Ki = std::vector<double>(3, 0.0);
+
+  std::vector<double> Kd = std::vector<double>(3, 0.0);
+
+  /* Declaration of target set point(velocity) */
+  std::vector<double> targetSetPoint = std::vector<double>(3, 0.0);
 
   /* Declaration of final velocity */
-  std::vector<double> finalVelocity;
+  std::vector<double> finalVelocity = std::vector<double>(3, 0.0);
 
   /* Declaration of actual velocity */
-  std::vector<double> actualVelocity;
+  std::vector<double> actualVelocity = std::vector<double>(3, 0.0);
 
   /* Declaration of error sum */
-  double errorSum;
+  double errorSum = 0;
 
   /* Declaration of last velocity */
-  double lastVelocity;
+  std::vector<double> lastVelocity = std::vector<double>(3, 0.0);
 
   /* Declaration of maximum limit of velocity */
-  double maxLimitVel;
-
-  /* Declaration of maximum limit of position vector*/
-  std::vector<double> maxLimitPos;
+  double maxLimitVel = 10;
 
  public:
 
   /**
-   *  @brief  Default constructor for PIDController
-   *
-   *  @param  none
-   *  @return none
-   */
-  PIDController();
-
-  /**
-   *  @brief  Default destructor for PIDController
-   *
-   *  @param  none
-   *  @return none
-   */
-  ~PIDController();
-
-  /**
-   *  @brief  Change Kp,Ki, Kd Gains for the controller
-   *
-   *  @param  shared pointer vector double of Kp gain
-   *  @param  shared pointer vector double of Ki gain
-   *  @param  shared pointer vector double of Kd gain
-   *  @return none
-   */
-  void changeGain(std::shared_ptr<std::vector<double>>,
-                  std::shared_ptr<std::vector<double>>,
-                  std::shared_ptr<std::vector<double>>);
-
-  /**
    *  @brief  Compute the output for the controller
-   *
-   *  @param  shared pointer vector double of actual velocity
+   *  @param  none
    *  @return vector double of the final velocity
    */
-  std::vector<double> computeOutput(std::vector<double>);
+  std::shared_ptr<std::vector<double>> computeOutput();
 
   /**
    *  @brief  Change set point
    *
-   *  @param  shared pointer vector double of set point
+   *  @param  shared pointer vector double of set point velocity of 3X1 vector
    *  @return vector double of the new set point
    */
-  std::vector<double> changeSetPoint(std::shared_ptr<std::vector<double>>);
+  std::shared_ptr<std::vector<double>> changeSetPoint(
+      std::shared_ptr<std::vector<double>> actSetPoint);
 
   /**
    *  @brief  Update the error sum
+   *  Compute errorSum += targetSetPoint - actualVelocity
    *
    *  @param  double value of error sum
    *  @return double value of new error sum
    */
-  double updateErrorSum(double);
-
-  /**
-   *  @brief  Get KpGain
-   *
-   *  @param  none
-   *  @return vector double of the Kp gain
-   */
-  std::vector<double> getKpGain();
+  double updateErrorSum();
 
   /**
    *  @brief  Set KpGain
    *
-   *  @param  shared pointer vector double of updated Kp gain
+   *  @param  shared pointer vector double of updated Kpx, Kpy, Kpz gain
    *  @return none
    */
-  void setKpGain(std::shared_ptr<std::vector<double>>);
+  bool setKpGain(std::shared_ptr<std::vector<double>> kp);
 
   /**
-   *  @brief  Get KiGain
+   *  @brief  Get KpGain
+   *  Kpx, Kpy, Kpz as the elements
    *
    *  @param  none
-   *  @return vector double of the Ki gain
+   *  @return vector double of the Kp gain
    */
-  std::vector<double> getKiGain();
+  std::shared_ptr<std::vector<double>> getKpGain();
 
   /**
    *  @brief  Set KiGain
    *
-   *  @param  shared pointer vector double of updated Ki gain
+   *  @param  shared pointer vector double of updated Kix, Kiy, Kiz gain
    *  @return none
    */
-  void setKiGain(std::shared_ptr<std::vector<double>>);
+  bool setKiGain(std::shared_ptr<std::vector<double>> ki);
 
   /**
-   *  @brief  Get KdGain
+   *  @brief  Get KiGain
+   *  Kix, Kiy, Kiz as the elements
    *
    *  @param  none
-   *  @return vector double of the Kd gain
+   *  @return vector double of the Ki gain
    */
-  std::vector<double> getKdGain();
+  std::shared_ptr<std::vector<double>> getKiGain();
 
   /**
    *  @brief  Set KdGain
    *
-   *  @param  shared pointer vector double of updated Kd gain
+   *  @param  shared pointer vector double of updated Kdx, Kdy, Kdz gain
    *  @return none
    */
-  void setKdGain(std::shared_ptr<std::vector<double>>);
+  bool setKdGain(std::shared_ptr<std::vector<double>> kd);
 
   /**
-   *  @brief  Get Actual Velocity
+   *  @brief  Get KdGain
+   *  Kdx, Kdy, Kdz as the elements
    *
    *  @param  none
-   *  @return vector double of the actual velocity
+   *  @return vector double of the Kd gain
    */
-  std::vector<double> getActualVelocity();
+  std::shared_ptr<std::vector<double>> getKdGain();
 
   /**
    *  @brief  Set Actual Velocity
    *
-   *  @param  shared pointer vector double of updated actual velocity
+   *  @param  shared pointer vector double of updated Ux, Uy, Uz
    *  @return vector none
    */
-  void setActualVelocity(std::shared_ptr<std::vector<double>>);
+  bool setActualVelocity(std::shared_ptr<std::vector<double>> actVel);
 
   /**
-   *  @brief  Get Maximum Limit for Velocity
-   *
+   *  @brief  Get Actual Velocity
+   *  Ux, Uy, Uz as the elements
    *  @param  none
-   *  @return vector double of the velocity limit
+   *  @return vector double of the actual velocity
    */
-  std::vector<double> getMaxLimitVel();
+  std::shared_ptr<std::vector<double>> getActualVelocity();
 
   /**
    *  @brief  Set Maximum limit for velocity
@@ -187,31 +156,15 @@ class PIDController {
    *  @param  shared pointer vector double of updated velocity limit
    *  @return none
    */
-  void setMaxLimitVel(std::shared_ptr<std::vector<double>>);
+  bool setMaxLimitVel(double maxLimVel);
 
   /**
-   *  @brief  Get Maximum Limit for position
+   *  @brief  Get Maximum Limit for Velocity
    *
    *  @param  none
-   *  @return vector double of the position limit
+   *  @return vector double of the velocity limit
    */
-  std::vector<double> getMaxLimitPos();
-
-  /**
-   *  @brief  set Maximum Limit for Velocity
-   *
-   *  @param  shared pointer vector double of updated position limit
-   *  @return none
-   */
-  void setMaxLimitPos(std::shared_ptr<std::vector<double>>);
-
-  /**
-   *  @brief  Get target set point
-   *
-   *  @param  none
-   *  @return vector double of the target set point
-   */
-  std::vector<double> getTargetSetPoint();
+  double getMaxLimitVel();
 
   /**
    *  @brief  Set target set point
@@ -219,15 +172,15 @@ class PIDController {
    *  @param  shared pointer vector double of target set point
    *  @return none
    */
-  void setTargetSetPoint(std::shared_ptr<std::vector<double>>);
+  bool setTargetSetPoint(std::shared_ptr<std::vector<double>>);
 
   /**
-   *  @brief  Reset system
+   *  @brief  Get target set point
    *
    *  @param  none
-   *  @return string of success message
+   *  @return vector double of the target set point
    */
-  std::string resetSystem();
+  std::shared_ptr<std::vector<double>> getTargetSetPoint();
 };
 
 #endif
