@@ -16,9 +16,9 @@
 // *
 // */
 #include <gtest/gtest.h>
+#include <math.h>
 #include <memory>
 #include "pid.hpp"
-#include <math.h>
 
 /**
  *  @brief  Get KP Gain Negative
@@ -57,7 +57,7 @@ TEST(getKpGainNeg, testgetKpGainNeg) {
  *  @param  none
  *  @return none
  */
-TEST (getKpGainPos, testGetKpGainPos) {
+TEST(getKpGainPos, testGetKpGainPos) {
   PIDController testObj = PIDController();
   std::shared_ptr<std::vector<double>> kp = testObj.getKpGain();
   for (auto i : *kp) {
@@ -109,7 +109,7 @@ TEST(getKiGainNeg, testgetKiGainNeg) {
  *  @param  none
  *  @return none
  */
-TEST (getKiGainPos, testGetKiGainPos) {
+TEST(getKiGainPos, testGetKiGainPos) {
   PIDController testObj = PIDController();
   std::shared_ptr<std::vector<double>> ki = testObj.getKiGain();
   for (auto i : *ki) {
@@ -161,7 +161,7 @@ TEST(getKdGainNeg, testgetKdGainNeg) {
  *  @param  none
  *  @return none
  */
-TEST (getKdGainPos, testGetKdGainPos) {
+TEST(getKdGainPos, testGetKdGainPos) {
   PIDController testObj = PIDController();
   std::shared_ptr<std::vector<double>> kd = testObj.getKdGain();
   for (auto i : *kd) {
@@ -396,7 +396,7 @@ TEST(setMaxLimitVel, testSetMaxLimitVel) {
  *  @param  none
  *  @return none
  */
-TEST(computePIDIteration,testcomputePIDIteration) {
+TEST(computePIDIteration, testcomputePIDIteration) {
   PIDController testObj;
   std::shared_ptr<std::vector<double>> testKp = std::make_shared<
       std::vector<double>>(3, 0.1);

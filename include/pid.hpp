@@ -1,3 +1,4 @@
+﻿
 ///*
 // *
 // * Copyright 2019 Prasheel Renkuntla
@@ -15,8 +16,8 @@
 // * PID Controller class declaration
 // *
 // */
-#ifndef INCLUDE_PIDCONTROLLER_HPP_
-#define INCLUDE_PIDCONTROLLER_HPP_
+#ifndef INCLUDE_PID_HPP_
+#define INCLUDE_PID_HPP_
 
 #include <iostream>
 #include <vector>
@@ -31,7 +32,6 @@
 // */
 class PIDController {
  private:
-
   /* Declaration of different PID gain factors  */
   std::vector<double> Kp = std::vector<double>(3, 0.0);
 
@@ -58,7 +58,6 @@ class PIDController {
   double maxLimitVel = 10;
 
  public:
-
   /**
    *  @brief  Compute the output for the controller
    *  @param  none
@@ -183,4 +182,5 @@ class PIDController {
   std::shared_ptr<std::vector<double>> getTargetSetPoint();
 };
 
-#endif
+
+#endif  // INCLUDE_PID_HPP_
