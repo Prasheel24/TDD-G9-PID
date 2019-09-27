@@ -20,38 +20,37 @@
 
 /**
  *  @brief  Compute the output for the controller
+ *  Link (for vector multiplication)-
+ *  https://stackoverflow.com/questions/13728430/element-wise-multiplication-of-two-vectors-in-c
  *
- *  @param  shared pointer vector
- *  double of actual velocity
- *  @return vector double of the final velocity
+ *  @param  none
+ *  @return shared pointer vector double of the final velocity
  */
 std::shared_ptr<std::vector<double>> PIDController::computeOutput() {
 }
 
 /**
- *  @brief  Change set point
+ *  @brief  Update the last velocity
  *
- *  @param  shared pointer vector double of set point
- *  @return vector double of the new set point
+ *  @param  none
+ *  @return double value of new last Velocity
  */
-std::shared_ptr<std::vector<double>> changeSetPoint(
-    std::shared_ptr<std::vector<double>> actSetPoint) {
+std::shared_ptr<std::vector<double>> updateLastVel() {
 }
-
 /**
  *  @brief  Update the error sum
  *
- *  @param  double value of error sum
- *  @return double value of new error sum
+ *  @param  none
+ *  @return shared pointer vector double value of new error sum
  */
-double PIDController::updateErrorSum() {
+std::shared_ptr<std::vector<double>> PIDController::updateErrorSum() {
 }
 
 /**
  *  @brief  Set KpGain
  *
  *  @param  shared pointer vector double of updated Kp gain
- *  @return none
+ *  @return bool
  */
 bool PIDController::setKpGain(std::shared_ptr<std::vector<double>> kp) {
   return false;
@@ -60,7 +59,7 @@ bool PIDController::setKpGain(std::shared_ptr<std::vector<double>> kp) {
  *  @brief  Get KpGain
  *
  *  @param  none
- *  @return vector double of the Kp gain
+ *  @return shared pointer vector double of the Kp gain
  */
 std::shared_ptr<std::vector<double>> PIDController::getKpGain() {
 }
@@ -69,7 +68,7 @@ std::shared_ptr<std::vector<double>> PIDController::getKpGain() {
  *  @brief  Set KiGain
  *
  *  @param  shared pointer vector double of updated Ki gain
- *  @return none
+ *  @return bool
  */
 bool PIDController::setKiGain(std::shared_ptr<std::vector<double>> ki) {
   return false;
@@ -79,7 +78,7 @@ bool PIDController::setKiGain(std::shared_ptr<std::vector<double>> ki) {
  *  @brief  Get KiGain
  *
  *  @param  none
- *  @return vector double of the Ki gain
+ *  @return shared pointer vector double of the Ki gain
  */
 std::shared_ptr<std::vector<double>> PIDController::getKiGain() {
 }
@@ -88,7 +87,7 @@ std::shared_ptr<std::vector<double>> PIDController::getKiGain() {
  *  @brief  Set KdGain
  *
  *  @param  shared pointer vector double of updated Kd gain
- *  @return none
+ *  @return bool
  */
 bool PIDController::setKdGain(std::shared_ptr<std::vector<double>> kd) {
   return false;
@@ -98,7 +97,7 @@ bool PIDController::setKdGain(std::shared_ptr<std::vector<double>> kd) {
  *  @brief  Get KdGain
  *
  *  @param  none
- *  @return vector double of the Kd gain
+ *  @return shared pointer vector double of the Kd gain
  */
 std::shared_ptr<std::vector<double>> PIDController::getKdGain() {
 }
@@ -107,7 +106,7 @@ std::shared_ptr<std::vector<double>> PIDController::getKdGain() {
  *  @brief  Set Actual Velocity
  *
  *  @param  shared pointer vector double of updated actual velocity
- *  @return vector none
+ *  @return bool
  */
 bool PIDController::setActualVelocity(
     std::shared_ptr<std::vector<double>> actVel) {
@@ -118,7 +117,7 @@ bool PIDController::setActualVelocity(
  *  @brief  Get Actual Velocity
  *
  *  @param  none
- *  @return vector double of the actual velocity
+ *  @return shared pointer vector double of the actual velocity
  */
 std::shared_ptr<std::vector<double>> PIDController::getActualVelocity() {
 }
@@ -126,8 +125,8 @@ std::shared_ptr<std::vector<double>> PIDController::getActualVelocity() {
 /**
  *  @brief  Set Maximum limit for velocity
  *
- *  @param  shared pointer vector double of updated velocity limit
- *  @return none
+ *  @param  double of updated velocity limit
+ *  @return bool
  */
 bool PIDController::setMaxLimitVel(double maxLimVel) {
   return false;
@@ -137,7 +136,7 @@ bool PIDController::setMaxLimitVel(double maxLimVel) {
  *  @brief  Get Maximum Limit for Velocity
  *
  *  @param  none
- *  @return vector double of the velocity limit
+ *  @return double of max limit Vel
  */
 double PIDController::getMaxLimitVel() {
 }
@@ -146,7 +145,7 @@ double PIDController::getMaxLimitVel() {
  *  @brief  Set target set point
  *
  *  @param  shared pointer vector double of target set point
- *  @return none
+ *  @return bool
  */
 bool PIDController::setTargetSetPoint(std::shared_ptr<std::vector<double>>) {
   return false;
@@ -156,7 +155,7 @@ bool PIDController::setTargetSetPoint(std::shared_ptr<std::vector<double>>) {
  *  @brief  Get target set point
  *
  *  @param  none
- *  @return vector double of the target set point
+ *  @return shared pointer vector double of the target set point
  */
 std::shared_ptr<std::vector<double>> PIDController::getTargetSetPoint() {
 }

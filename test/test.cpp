@@ -385,3 +385,40 @@ TEST(setMaxLimitVel, testSetMaxLimitVel) {
   ASSERT_TRUE(testObj.setMaxLimitVel(mx));
   ASSERT_LT(testObj.getMaxLimitVel(), 0);
 }
+
+/**
+ *  @brief  Compute Output for one iteration
+ *
+ *  take Kp, Ki, Kd, Actual Velocity, Target Set point
+ *  Check -- set the corresponding values
+ *  Check -- the output velocity from PID
+ *
+ *  @param  none
+ *  @return none
+ */
+TEST(computePIDIteration,testcomputePIDIteration) {
+  PIDController testObj;
+  std::shared_ptr<std::vector<double>> testKp = std::make_shared<
+      std::vector<double>>(3, 0.1);
+  std::shared_ptr<std::vector<double>> testKi = std::make_shared<
+      std::vector<double>>(3, 0.1);
+  std::shared_ptr<std::vector<double>> testKd = std::make_shared<
+      std::vector<double>>(3, 0.1);
+  std::shared_ptr<std::vector<double>> testVel = std::make_shared<
+      std::vector<double>>(3, 0.5);
+  std::shared_ptr<std::vector<double>> testTPT = std::make_shared<
+      std::vector<double>>(3, 1);
+
+  ASSERT_TRUE(testObj.setKpGain(testKp));
+  ASSERT_TRUE(testObj.setKiGain(testKi));
+  ASSERT_TRUE(testObj.setKdGain(testKd));
+  ASSERT_TRUE(testObj.setActualVelocity(testVel));
+  ASSERT_TRUE(testObj.setTargetSetPoint(testTPT));
+
+  std::shared_ptr<std::vector<double>> outVel;
+
+  outVel = testObj.computeOutput();
+  ASSERT_EQ(0.15, (*outVel)[0]);
+  ASSERT_EQ(0.15, (*outVel)[1]);
+  ASSERT_EQ(0.15, (*outVel)[2]);
+}
