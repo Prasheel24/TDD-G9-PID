@@ -2,8 +2,8 @@
 // * Copyright 2019 Prasheel Renkuntla
 // *
 // * @file         main.cpp
-// * @author       Prasheel Renkuntla (Driver)
-// *               Suyash Yeotikar    (Navigator)
+// * @author       Prasheel Renkuntla (Driver - Part 1)
+// *               Suyash Yeotikar    (Navigator - Part 1)
 // * @date         09/25/2019
 // * @version      1.0
 // *
