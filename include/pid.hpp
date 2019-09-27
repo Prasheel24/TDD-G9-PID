@@ -4,6 +4,7 @@
 // *
 // * @file         pid.hpp
 // * @author       Prasheel Renkuntla (Driver)
+// *               Suyash Yeotikar    (Navigator)
 // * @date         09/25/2019
 // * @version      1.0
 // *

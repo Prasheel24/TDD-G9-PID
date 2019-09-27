@@ -4,6 +4,7 @@
 // *
 // * @file         test.cpp
 // * @author       Prasheel Renkuntla (Driver)
+// *               Suyash Yeotikar    (Navigator)
 // * @date         09/25/2019
 // * @version      1.0
 // *
@@ -22,8 +23,10 @@
 /**
  *  @brief  Get KP Gain Negative
  *
- *  Check if the individual x,y,z values are Greater than 0
- *  if
+ *  Check -- the individual x,y,z values are Greater than 0
+ *  take a negative vector
+ *  Check -- It should not be able to set negative vector
+ *  Check -- If negative, then it should contain last value
  *
  *  @param  none
  *  @return none
@@ -43,6 +46,17 @@ TEST(getKpGainNeg, testgetKpGainNeg) {
   ASSERT_EQ((*testObj.getKpGain())[2], (*kp)[2]);
 }
 
+/**
+ *  @brief  Get KP Gain Positive
+ *
+ *  Check -- the individual x,y,z values are Greater than 0
+ *  take a positive vector
+ *  Check -- It should be able to set positive vector
+ *  Check -- If positive, then it should contain new value
+ *
+ *  @param  none
+ *  @return none
+ */
 TEST (getKpGainPos, testGetKpGainPos) {
   PIDController testObj = PIDController();
   std::shared_ptr<std::vector<double>> kp = testObj.getKpGain();
@@ -58,6 +72,17 @@ TEST (getKpGainPos, testGetKpGainPos) {
   ASSERT_EQ((*testObj.getKpGain())[2], (*testPos)[2]);
 }
 
+/**
+ *  @brief  Get Ki Gain Negative
+ *
+ *  Check -- the individual x,y,z values are Greater than 0
+ *  take a negative vector
+ *  Check -- It should not be able to set negative vector
+ *  Check -- If negative, then it should contain last value
+ *
+ *  @param  none
+ *  @return none
+ */
 TEST(getKiGainNeg, testgetKiGainNeg) {
   PIDController testObj = PIDController();
   std::shared_ptr<std::vector<double>> ki = testObj.getKiGain();
@@ -72,6 +97,18 @@ TEST(getKiGainNeg, testgetKiGainNeg) {
   ASSERT_EQ((*testObj.getKiGain())[1], (*ki)[1]);
   ASSERT_EQ((*testObj.getKiGain())[2], (*ki)[2]);
 }
+
+/**
+ *  @brief  Get Ki Gain Positive
+ *
+ *  Check -- the individual x,y,z values are Greater than 0
+ *  take a positive vector
+ *  Check -- It should be able to set positive vector
+ *  Check -- If positive, then it should contain new value
+ *
+ *  @param  none
+ *  @return none
+ */
 TEST (getKiGainPos, testGetKiGainPos) {
   PIDController testObj = PIDController();
   std::shared_ptr<std::vector<double>> ki = testObj.getKiGain();
@@ -86,6 +123,18 @@ TEST (getKiGainPos, testGetKiGainPos) {
   ASSERT_EQ((*testObj.getKiGain())[1], (*testPos)[1]);
   ASSERT_EQ((*testObj.getKiGain())[2], (*testPos)[2]);
 }
+
+/**
+ *  @brief  Get Kd Gain Negative
+ *
+ *  Check -- the individual x,y,z values are Greater than 0
+ *  take a negative vector
+ *  Check -- It should not be able to set negative vector
+ *  Check -- If negative, then it should contain last value
+ *
+ *  @param  none
+ *  @return none
+ */
 TEST(getKdGainNeg, testgetKdGainNeg) {
   PIDController testObj = PIDController();
   std::shared_ptr<std::vector<double>> kd = testObj.getKdGain();
@@ -100,6 +149,18 @@ TEST(getKdGainNeg, testgetKdGainNeg) {
   ASSERT_EQ((*testObj.getKdGain())[1], (*kd)[1]);
   ASSERT_EQ((*testObj.getKdGain())[2], (*kd)[2]);
 }
+
+/**
+ *  @brief  Get Ki Gain Positive
+ *
+ *  Check -- the individual x,y,z values are Greater than 0
+ *  take a positive vector
+ *  Check -- It should be able to set positive vector
+ *  Check -- If positive, then it should contain new value
+ *
+ *  @param  none
+ *  @return none
+ */
 TEST (getKdGainPos, testGetKdGainPos) {
   PIDController testObj = PIDController();
   std::shared_ptr<std::vector<double>> kd = testObj.getKdGain();
@@ -115,6 +176,14 @@ TEST (getKdGainPos, testGetKdGainPos) {
   ASSERT_EQ((*testObj.getKdGain())[2], (*testPos)[2]);
 }
 
+/**
+ *  @brief  Compute output velocity magnitude
+ *
+ *  Check -- if output velocity magnitude is less than max limit
+ *
+ *  @param  none
+ *  @return none
+ */
 TEST(computeOutput, testComputeOutput) {
   PIDController testObj = PIDController();
   std::shared_ptr<std::vector<double>> comOut = testObj.computeOutput();
@@ -123,9 +192,17 @@ TEST(computeOutput, testComputeOutput) {
     sum += (i) * (i);
   }
   double newSum = sqrt(sum);
-  EXPECT_LT(newSum, testObj.getMaxLimitVel());
+  ASSERT_LE(newSum, testObj.getMaxLimitVel());
 }
 
+/**
+ *  @brief  Compute actual velocity magnitude
+ *
+ *  Check -- if actual velocity magnitude is less than max limit
+ *
+ *  @param  none
+ *  @return none
+ */
 TEST(actualVelocity, testActualVelocity) {
   PIDController testObj = PIDController();
   std::shared_ptr<std::vector<double>> actVel = testObj.getActualVelocity();
@@ -134,9 +211,17 @@ TEST(actualVelocity, testActualVelocity) {
     sum += (i) * (i);
   }
   double newSum = sqrt(sum);
-  EXPECT_LT(newSum, testObj.getMaxLimitVel());
+  ASSERT_LE(newSum, testObj.getMaxLimitVel());
 }
 
+/**
+ *  @brief  Compute target set point velocity magnitude
+ *
+ *  Check -- if target set point velocity magnitude is less than max limit
+ *
+ *  @param  none
+ *  @return none
+ */
 TEST(targetSetPoint, testTargetSetPoint) {
   PIDController testObj = PIDController();
   std::shared_ptr<std::vector<double>> tgtSetPoint =
@@ -146,9 +231,17 @@ TEST(targetSetPoint, testTargetSetPoint) {
     sum += (i) * (i);
   }
   double newSum = sqrt(sum);
-  EXPECT_LT(newSum, testObj.getMaxLimitVel());
+  ASSERT_LE(newSum, testObj.getMaxLimitVel());
 }
 
+/**
+ *  @brief  Set Actual Velocity
+ *
+ *  Check -- if new velocity magnitude is less than max limit
+ *
+ *  @param  none
+ *  @return none
+ */
 TEST(setActVelocity, testSetActVelocity) {
   PIDController testObj;
   std::shared_ptr<std::vector<double>> av =
@@ -158,9 +251,20 @@ TEST(setActVelocity, testSetActVelocity) {
     sum += (i) * (i);
   }
   double newSum = sqrt(sum);
-  EXPECT_LT(newSum, testObj.getMaxLimitVel());
+  ASSERT_LE(newSum, testObj.getMaxLimitVel());
 }
 
+/**
+ *  @brief  Get Actual Velocity Negative Vector
+ *
+ *  Check -- magnitude of current vector is less than Max Limit
+ *  take a negative vector
+ *  Check -- it should not be able to assign a negative vector
+ *  Check -- if negative, it should contain the last value
+ *
+ *  @param  none
+ *  @return none
+ */
 TEST(getActualVelNeg, testgetActualVelNeg) {
   PIDController testObj = PIDController();
   std::shared_ptr<std::vector<double>> av = testObj.getActualVelocity();
@@ -179,6 +283,17 @@ TEST(getActualVelNeg, testgetActualVelNeg) {
   ASSERT_EQ((*testObj.getActualVelocity())[2], (*av)[2]);
 }
 
+/**
+ *  @brief  Get Actual Velocity Positive Vector
+ *
+ *  Check -- magnitude of current vector is less than Max Limit
+ *  take a positive vector
+ *  Check -- it should be able to assign a positive vector
+ *  Check -- if positive, it should contain the new value
+ *
+ *  @param  none
+ *  @return none
+ */
 TEST(getActualVelPos, testgetActualVelPos) {
   PIDController testObj = PIDController();
   std::shared_ptr<std::vector<double>> av = testObj.getActualVelocity();
@@ -197,6 +312,17 @@ TEST(getActualVelPos, testgetActualVelPos) {
   ASSERT_EQ((*testObj.getActualVelocity())[2], (*testPos)[2]);
 }
 
+/**
+ *  @brief  Get Target Set Point Velocity Negative Vector
+ *
+ *  Check -- magnitude of current vector is less than Max Limit
+ *  take a negative vector
+ *  Check -- it should not be able to assign a negative vector
+ *  Check -- if negative, it should contain the last value
+ *
+ *  @param  none
+ *  @return none
+ */
 TEST(getTgtSetPointNeg, testGetTgtSetPointNeg) {
   PIDController testObj = PIDController();
   std::shared_ptr<std::vector<double>> tpt = testObj.getTargetSetPoint();
@@ -215,6 +341,17 @@ TEST(getTgtSetPointNeg, testGetTgtSetPointNeg) {
   ASSERT_EQ((*testObj.getTargetSetPoint())[2], (*tpt)[2]);
 }
 
+/**
+ *  @brief  Get Actual Velocity Positive Vector
+ *
+ *  Check -- magnitude of current vector is less than Max Limit
+ *  take a positive vector
+ *  Check -- it should be able to assign a positive vector
+ *  Check -- if positive, it should contain the new value
+ *
+ *  @param  none
+ *  @return none
+ */
 TEST(getTgtSetPointPos, testGetTgtSetPointPos) {
   PIDController testObj = PIDController();
   std::shared_ptr<std::vector<double>> tpt = testObj.getTargetSetPoint();
@@ -233,17 +370,18 @@ TEST(getTgtSetPointPos, testGetTgtSetPointPos) {
   ASSERT_EQ((*testObj.getTargetSetPoint())[2], (*testPos)[2]);
 }
 
+/**
+ *  @brief  Set Max Limit Range
+ *
+ *  Check -- set the max limit value
+ *  Check -- if max limit is Greater than 0
+ *
+ *  @param  none
+ *  @return none
+ */
 TEST(setMaxLimitVel, testSetMaxLimitVel) {
   PIDController testObj;
   double mx = 10;
   ASSERT_TRUE(testObj.setMaxLimitVel(mx));
   ASSERT_LT(testObj.getMaxLimitVel(), 0);
 }
-
-TEST(setTrgtStPoint, testSetTrgtStPoint) {
-  PIDController testObj;
-  std::shared_ptr<std::vector<double>> stpt = std::make_shared<
-      std::vector<double>>(3, 1.1);
-  ASSERT_TRUE(testObj.setTargetSetPoint(stpt));
-}
-
