@@ -329,9 +329,9 @@ TEST(setMaxLimitVel, testSetMaxLimitVel) {
   std::shared_ptr<std::vector<double>> testPos = std::make_shared<
       std::vector<double>>(3, 10);
   ASSERT_FALSE(testObj.SetActualVelocity(testPos));
-  std::shared_ptr<std::vector<double>> testPos = std::make_shared<
+  std::shared_ptr<std::vector<double>> testPositive = std::make_shared<
       std::vector<double>>(3, 10);
-  ASSERT_FALSE(testObj.SetTargetSetPoint(testPos));
+  ASSERT_FALSE(testObj.SetTargetSetPoint(testPositive));
 }
 
 /**
@@ -344,7 +344,7 @@ TEST(setMaxLimitVel, testSetMaxLimitVel) {
  *  @param  none
  *  @return none
  */
-TEST(computePIDIteration,testcomputePIDIteration) {
+TEST(computePIDIteration, testcomputePIDIteration) {
   PIDController testObj;
   std::shared_ptr<std::vector<double>> testKp = std::make_shared<
       std::vector<double>>(3, 0.1);
