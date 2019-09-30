@@ -1,4 +1,3 @@
-﻿
 ///*
 // *
 // * Copyright 2019 Prasheel Renkuntla
@@ -16,8 +15,8 @@
 // * PID Controller class declaration
 // *
 // */
-#ifndef INCLUDE_PID_HPP_
-#define INCLUDE_PID_HPP_
+#ifndef INCLUDE_PIDCONTROLLER_HPP_
+#define INCLUDE_PIDCONTROLLER_HPP_
 
 #include <iostream>
 #include <vector>
@@ -31,33 +30,8 @@
 // *
 // */
 class PIDController {
- private:
-  /* Declaration of different PID gain factors  */
-  std::vector<double> Kp = std::vector<double>(3, 0.0);
-
-  std::vector<double> Ki = std::vector<double>(3, 0.0);
-
-  std::vector<double> Kd = std::vector<double>(3, 0.0);
-
-  /* Declaration of target set point(velocity) */
-  std::vector<double> targetSetPoint = std::vector<double>(3, 0.0);
-
-  /* Declaration of final velocity(computed) */
-  std::vector<double> finalVelocity = std::vector<double>(3, 0.0);
-
-  /* Declaration of actual velocity */
-  std::vector<double> actualVelocity = std::vector<double>(3, 0.0);
-
-  /* Declaration of error sum */
-  std::vector<double> errorSum = std::vector<double>(3, 0.0);
-
-  /* Declaration of last velocity */
-  std::vector<double> lastVelocity = std::vector<double>(3, 0.0);
-
-  /* Declaration of maximum limit of velocity */
-  double maxLimitVel = 10;
-
  public:
+
   /**
    *  @brief  Compute the output for the controller
    *  @param  none
@@ -180,7 +154,33 @@ class PIDController {
    *  @return shared pointer vector double of the target set point
    */
   std::shared_ptr<std::vector<double>> getTargetSetPoint();
+ private:
+
+  /* Declaration of different PID gain factors  */
+  std::vector<double> Kp = std::vector<double>(3, 0.0);
+
+  std::vector<double> Ki = std::vector<double>(3, 0.0);
+
+  std::vector<double> Kd = std::vector<double>(3, 0.0);
+
+  /* Declaration of target set point(velocity) */
+  std::vector<double> targetSetPoint = std::vector<double>(3, 0.0);
+
+  /* Declaration of final velocity(computed) */
+  std::vector<double> finalVelocity = std::vector<double>(3, 0.0);
+
+  /* Declaration of actual velocity */
+  std::vector<double> actualVelocity = std::vector<double>(3, 0.0);
+
+  /* Declaration of error sum */
+  std::vector<double> errorSum = std::vector<double>(3, 0.0);
+
+  /* Declaration of last velocity */
+  std::vector<double> lastVelocity = std::vector<double>(3, 0.0);
+
+  /* Declaration of maximum limit of velocity */
+  double maxLimitVel = 10;
+
 };
 
-
-#endif  // INCLUDE_PID_HPP_
+#endif
