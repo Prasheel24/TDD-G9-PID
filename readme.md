@@ -22,13 +22,17 @@ Test Driven development for the PID Controller designed for Acme Robotics.
 
 ## TODO
 
-1. Create skeleton for the code implementation.
+- [x] Create skeleton for the code implementation.
 
-2. Unit Tests for the member functions of the class.
+- [x] Unit Tests for the member functions of the class.
 
-3. Implementation of the Code.
+- [x] Implementation of the Code.
 
-4. Run Unit tests.
+- [x] Run Unit tests.
+
+- [x] Submit Pull Request once Build is Passing.
+
+- [x] Accept Pull Request
 
 ## Standard install via command-line
 ```
