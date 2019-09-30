@@ -16,9 +16,9 @@
 // *
 // */
 #include <gtest/gtest.h>
+#include <cmath>
 #include <memory>
 #include "pid.hpp"
-#include <math.h>
 
 /**
  *  @brief  Get KP Gain Negative
@@ -33,17 +33,17 @@
  */
 TEST(getKpGainNeg, testgetKpGainNeg) {
   PIDController testObj = PIDController();
-  std::shared_ptr<std::vector<double>> kp = testObj.getKpGain();
+  std::shared_ptr<std::vector<double>> kp = testObj.GetKpGain();
   for (auto i : *kp) {
     ASSERT_GE(i, 0);
   }
   std::shared_ptr<std::vector<double>> testNeg = std::make_shared<
       std::vector<double>>(3, -1);
-  ASSERT_FALSE(testObj.setKpGain(testNeg));
+  ASSERT_FALSE(testObj.SetKpGain(testNeg));
 
-  ASSERT_EQ((*testObj.getKpGain())[0], (*kp)[0]);
-  ASSERT_EQ((*testObj.getKpGain())[1], (*kp)[1]);
-  ASSERT_EQ((*testObj.getKpGain())[2], (*kp)[2]);
+  ASSERT_EQ((*testObj.GetKpGain())[0], (*kp)[0]);
+  ASSERT_EQ((*testObj.GetKpGain())[1], (*kp)[1]);
+  ASSERT_EQ((*testObj.GetKpGain())[2], (*kp)[2]);
 }
 
 /**
@@ -57,19 +57,19 @@ TEST(getKpGainNeg, testgetKpGainNeg) {
  *  @param  none
  *  @return none
  */
-TEST (getKpGainPos, testGetKpGainPos) {
+TEST(getKpGainPos, testGetKpGainPos) {
   PIDController testObj = PIDController();
-  std::shared_ptr<std::vector<double>> kp = testObj.getKpGain();
+  std::shared_ptr<std::vector<double>> kp = testObj.GetKpGain();
   for (auto i : *kp) {
     ASSERT_GE(i, 0);
   }
   std::shared_ptr<std::vector<double>> testPos = std::make_shared<
       std::vector<double>>(3, 1);
-  ASSERT_TRUE(testObj.setKpGain(testPos));
+  ASSERT_TRUE(testObj.SetKpGain(testPos));
 
-  ASSERT_EQ((*testObj.getKpGain())[0], (*testPos)[0]);
-  ASSERT_EQ((*testObj.getKpGain())[1], (*testPos)[1]);
-  ASSERT_EQ((*testObj.getKpGain())[2], (*testPos)[2]);
+  ASSERT_EQ((*testObj.GetKpGain())[0], (*testPos)[0]);
+  ASSERT_EQ((*testObj.GetKpGain())[1], (*testPos)[1]);
+  ASSERT_EQ((*testObj.GetKpGain())[2], (*testPos)[2]);
 }
 
 /**
@@ -85,17 +85,17 @@ TEST (getKpGainPos, testGetKpGainPos) {
  */
 TEST(getKiGainNeg, testgetKiGainNeg) {
   PIDController testObj = PIDController();
-  std::shared_ptr<std::vector<double>> ki = testObj.getKiGain();
+  std::shared_ptr<std::vector<double>> ki = testObj.GetKiGain();
   for (auto i : *ki) {
     ASSERT_GE(i, 0);
   }
   std::shared_ptr<std::vector<double>> testNeg = std::make_shared<
       std::vector<double>>(3, -1);
-  ASSERT_FALSE(testObj.setKiGain(testNeg));
+  ASSERT_FALSE(testObj.SetKiGain(testNeg));
 
-  ASSERT_EQ((*testObj.getKiGain())[0], (*ki)[0]);
-  ASSERT_EQ((*testObj.getKiGain())[1], (*ki)[1]);
-  ASSERT_EQ((*testObj.getKiGain())[2], (*ki)[2]);
+  ASSERT_EQ((*testObj.GetKiGain())[0], (*ki)[0]);
+  ASSERT_EQ((*testObj.GetKiGain())[1], (*ki)[1]);
+  ASSERT_EQ((*testObj.GetKiGain())[2], (*ki)[2]);
 }
 
 /**
@@ -109,19 +109,19 @@ TEST(getKiGainNeg, testgetKiGainNeg) {
  *  @param  none
  *  @return none
  */
-TEST (getKiGainPos, testGetKiGainPos) {
+TEST(getKiGainPos, testGetKiGainPos) {
   PIDController testObj = PIDController();
-  std::shared_ptr<std::vector<double>> ki = testObj.getKiGain();
+  std::shared_ptr<std::vector<double>> ki = testObj.GetKiGain();
   for (auto i : *ki) {
     ASSERT_GE(i, 0);
   }
   std::shared_ptr<std::vector<double>> testPos = std::make_shared<
       std::vector<double>>(3, 1);
-  ASSERT_TRUE(testObj.setKiGain(testPos));
+  ASSERT_TRUE(testObj.SetKiGain(testPos));
 
-  ASSERT_EQ((*testObj.getKiGain())[0], (*testPos)[0]);
-  ASSERT_EQ((*testObj.getKiGain())[1], (*testPos)[1]);
-  ASSERT_EQ((*testObj.getKiGain())[2], (*testPos)[2]);
+  ASSERT_EQ((*testObj.GetKiGain())[0], (*testPos)[0]);
+  ASSERT_EQ((*testObj.GetKiGain())[1], (*testPos)[1]);
+  ASSERT_EQ((*testObj.GetKiGain())[2], (*testPos)[2]);
 }
 
 /**
@@ -137,17 +137,17 @@ TEST (getKiGainPos, testGetKiGainPos) {
  */
 TEST(getKdGainNeg, testgetKdGainNeg) {
   PIDController testObj = PIDController();
-  std::shared_ptr<std::vector<double>> kd = testObj.getKdGain();
+  std::shared_ptr<std::vector<double>> kd = testObj.GetKdGain();
   for (auto i : *kd) {
     ASSERT_GE(i, 0);
   }
   std::shared_ptr<std::vector<double>> testNeg = std::make_shared<
       std::vector<double>>(3, -1);
-  ASSERT_FALSE(testObj.setKdGain(testNeg));
+  ASSERT_FALSE(testObj.SetKdGain(testNeg));
 
-  ASSERT_EQ((*testObj.getKdGain())[0], (*kd)[0]);
-  ASSERT_EQ((*testObj.getKdGain())[1], (*kd)[1]);
-  ASSERT_EQ((*testObj.getKdGain())[2], (*kd)[2]);
+  ASSERT_EQ((*testObj.GetKdGain())[0], (*kd)[0]);
+  ASSERT_EQ((*testObj.GetKdGain())[1], (*kd)[1]);
+  ASSERT_EQ((*testObj.GetKdGain())[2], (*kd)[2]);
 }
 
 /**
@@ -161,19 +161,19 @@ TEST(getKdGainNeg, testgetKdGainNeg) {
  *  @param  none
  *  @return none
  */
-TEST (getKdGainPos, testGetKdGainPos) {
+TEST(getKdGainPos, testGetKdGainPos) {
   PIDController testObj = PIDController();
-  std::shared_ptr<std::vector<double>> kd = testObj.getKdGain();
+  std::shared_ptr<std::vector<double>> kd = testObj.GetKdGain();
   for (auto i : *kd) {
     ASSERT_GE(i, 0);
   }
   std::shared_ptr<std::vector<double>> testPos = std::make_shared<
       std::vector<double>>(3, 1);
-  ASSERT_TRUE(testObj.setKdGain(testPos));
+  ASSERT_TRUE(testObj.SetKdGain(testPos));
 
-  ASSERT_EQ((*testObj.getKdGain())[0], (*testPos)[0]);
-  ASSERT_EQ((*testObj.getKdGain())[1], (*testPos)[1]);
-  ASSERT_EQ((*testObj.getKdGain())[2], (*testPos)[2]);
+  ASSERT_EQ((*testObj.GetKdGain())[0], (*testPos)[0]);
+  ASSERT_EQ((*testObj.GetKdGain())[1], (*testPos)[1]);
+  ASSERT_EQ((*testObj.GetKdGain())[2], (*testPos)[2]);
 }
 
 /**
@@ -186,13 +186,13 @@ TEST (getKdGainPos, testGetKdGainPos) {
  */
 TEST(computeOutput, testComputeOutput) {
   PIDController testObj = PIDController();
-  std::shared_ptr<std::vector<double>> comOut = testObj.computeOutput();
+  std::shared_ptr<std::vector<double>> comOut = testObj.ComputeOutput();
   double sum = 0;
   for (auto i : *comOut) {
     sum += (i) * (i);
   }
   double newSum = sqrt(sum);
-  ASSERT_LE(newSum, testObj.getMaxLimitVel());
+  ASSERT_LE(newSum, testObj.GetMaxLimitVel());
 }
 
 /**
@@ -205,13 +205,13 @@ TEST(computeOutput, testComputeOutput) {
  */
 TEST(actualVelocity, testActualVelocity) {
   PIDController testObj = PIDController();
-  std::shared_ptr<std::vector<double>> actVel = testObj.getActualVelocity();
+  std::shared_ptr<std::vector<double>> actVel = testObj.GetActualVelocity();
   double sum = 0;
   for (auto i : *actVel) {
     sum += (i) * (i);
   }
   double newSum = sqrt(sum);
-  ASSERT_LE(newSum, testObj.getMaxLimitVel());
+  ASSERT_LE(newSum, testObj.GetMaxLimitVel());
 }
 
 /**
@@ -225,13 +225,13 @@ TEST(actualVelocity, testActualVelocity) {
 TEST(targetSetPoint, testTargetSetPoint) {
   PIDController testObj = PIDController();
   std::shared_ptr<std::vector<double>> tgtSetPoint =
-      testObj.getTargetSetPoint();
+      testObj.GetTargetSetPoint();
   double sum = 0;
   for (auto i : *tgtSetPoint) {
     sum += (i) * (i);
   }
   double newSum = sqrt(sum);
-  ASSERT_LE(newSum, testObj.getMaxLimitVel());
+  ASSERT_LE(newSum, testObj.GetMaxLimitVel());
 }
 
 /**
@@ -251,7 +251,7 @@ TEST(setActVelocity, testSetActVelocity) {
     sum += (i) * (i);
   }
   double newSum = sqrt(sum);
-  ASSERT_LE(newSum, testObj.getMaxLimitVel());
+  ASSERT_LE(newSum, testObj.GetMaxLimitVel());
 }
 
 /**
@@ -267,20 +267,20 @@ TEST(setActVelocity, testSetActVelocity) {
  */
 TEST(getActualVelPos, testgetActualVelPos) {
   PIDController testObj = PIDController();
-  std::shared_ptr<std::vector<double>> av = testObj.getActualVelocity();
+  std::shared_ptr<std::vector<double>> av = testObj.GetActualVelocity();
   double sum = 0;
   for (auto i : *av) {
     sum += (i) * (i);
   }
   double newSum = sqrt(sum);
-  ASSERT_LE(newSum, testObj.getMaxLimitVel());
+  ASSERT_LE(newSum, testObj.GetMaxLimitVel());
   std::shared_ptr<std::vector<double>> testPos = std::make_shared<
       std::vector<double>>(3, 3);
-  ASSERT_TRUE(testObj.setActualVelocity(testPos));
+  ASSERT_TRUE(testObj.SetActualVelocity(testPos));
 
-  ASSERT_EQ((*testObj.getActualVelocity())[0], (*testPos)[0]);
-  ASSERT_EQ((*testObj.getActualVelocity())[1], (*testPos)[1]);
-  ASSERT_EQ((*testObj.getActualVelocity())[2], (*testPos)[2]);
+  ASSERT_EQ((*testObj.GetActualVelocity())[0], (*testPos)[0]);
+  ASSERT_EQ((*testObj.GetActualVelocity())[1], (*testPos)[1]);
+  ASSERT_EQ((*testObj.GetActualVelocity())[2], (*testPos)[2]);
 }
 
 /**
@@ -296,20 +296,20 @@ TEST(getActualVelPos, testgetActualVelPos) {
  */
 TEST(getTgtSetPointPos, testGetTgtSetPointPos) {
   PIDController testObj = PIDController();
-  std::shared_ptr<std::vector<double>> tpt = testObj.getTargetSetPoint();
+  std::shared_ptr<std::vector<double>> tpt = testObj.GetTargetSetPoint();
   double sum = 0;
   for (auto i : *tpt) {
     sum += (i) * (i);
   }
   double newSum = sqrt(sum);
-  ASSERT_LE(newSum, testObj.getMaxLimitVel());
+  ASSERT_LE(newSum, testObj.GetMaxLimitVel());
   std::shared_ptr<std::vector<double>> testPos = std::make_shared<
       std::vector<double>>(3, 3);
-  ASSERT_FALSE(testObj.setTargetSetPoint(testPos));
+  ASSERT_FALSE(testObj.SetTargetSetPoint(testPos));
 
-  ASSERT_EQ((*testObj.getTargetSetPoint())[0], (*testPos)[0]);
-  ASSERT_EQ((*testObj.getTargetSetPoint())[1], (*testPos)[1]);
-  ASSERT_EQ((*testObj.getTargetSetPoint())[2], (*testPos)[2]);
+  ASSERT_EQ((*testObj.GetTargetSetPoint())[0], (*testPos)[0]);
+  ASSERT_EQ((*testObj.GetTargetSetPoint())[1], (*testPos)[1]);
+  ASSERT_EQ((*testObj.GetTargetSetPoint())[2], (*testPos)[2]);
 }
 
 /**
@@ -324,8 +324,8 @@ TEST(getTgtSetPointPos, testGetTgtSetPointPos) {
 TEST(setMaxLimitVel, testSetMaxLimitVel) {
   PIDController testObj;
   double mx = 10;
-  ASSERT_TRUE(testObj.setMaxLimitVel(mx));
-  ASSERT_EQ(testObj.getMaxLimitVel(), 10);
+  ASSERT_TRUE(testObj.SetMaxLimitVel(mx));
+  ASSERT_EQ(testObj.GetMaxLimitVel(), 10);
 }
 
 /**
@@ -338,7 +338,7 @@ TEST(setMaxLimitVel, testSetMaxLimitVel) {
  *  @param  none
  *  @return none
  */
-TEST(computePIDIteration,testcomputePIDIteration) {
+TEST(computePIDIteration, testcomputePIDIteration) {
   PIDController testObj;
   std::shared_ptr<std::vector<double>> testKp = std::make_shared<
       std::vector<double>>(3, 0.1);
@@ -351,15 +351,15 @@ TEST(computePIDIteration,testcomputePIDIteration) {
   std::shared_ptr<std::vector<double>> testTPT = std::make_shared<
       std::vector<double>>(3, 1);
 
-  ASSERT_TRUE(testObj.setKpGain(testKp));
-  ASSERT_TRUE(testObj.setKiGain(testKi));
-  ASSERT_TRUE(testObj.setKdGain(testKd));
-  ASSERT_TRUE(testObj.setActualVelocity(testVel));
-  ASSERT_TRUE(testObj.setTargetSetPoint(testTPT));
+  ASSERT_TRUE(testObj.SetKpGain(testKp));
+  ASSERT_TRUE(testObj.SetKiGain(testKi));
+  ASSERT_TRUE(testObj.SetKdGain(testKd));
+  ASSERT_TRUE(testObj.SetActualVelocity(testVel));
+  ASSERT_TRUE(testObj.SetTargetSetPoint(testTPT));
 
   std::shared_ptr<std::vector<double>> outVel;
 
-  outVel = testObj.computeOutput();
+  outVel = testObj.ComputeOutput();
   ASSERT_EQ(0.55, (*outVel)[0]);
   ASSERT_EQ(0.55, (*outVel)[1]);
   ASSERT_EQ(0.55, (*outVel)[2]);
