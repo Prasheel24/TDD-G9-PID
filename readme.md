@@ -1,6 +1,6 @@
-[![Coverage Status](https://coveralls.io/repos/github/Prasheel24/cpp-boilerplate/badge.svg?branch=master)](https://coveralls.io/github/Prasheel24/cpp-boilerplate?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/Prasheel24/TDD-G9-PID/badge.svg?branch=master)](https://coveralls.io/github/Prasheel24/TDD-G9-PID?branch=master)
 
-[![Build Status](https://travis-ci.org/Prasheel24/cpp-boilerplate.svg?branch=master)](https://travis-ci.org/Prasheel24/cpp-boilerplate)
+[![Build Status](https://travis-ci.org/Prasheel24/TDD-G9-PID.svg?branch=master)](https://travis-ci.org/Prasheel24/TDD-G9-PID)
 
 # PID Controller - Acme Robotics
 
