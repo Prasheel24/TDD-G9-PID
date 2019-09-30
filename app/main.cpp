@@ -4,6 +4,8 @@
 // * @file         main.cpp
 // * @author       Prasheel Renkuntla (Driver - Part 1)
 // *               Suyash Yeotikar    (Navigator - Part 1)
+// *               Rohan Singh        (Driver - Part 2)
+// *               Kamakshi Jain      (Navigatior - Part 2)
 // * @date         09/25/2019
 // * @version      1.0
 // *
