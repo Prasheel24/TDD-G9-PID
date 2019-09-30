@@ -305,7 +305,7 @@ TEST(getTgtSetPointPos, testGetTgtSetPointPos) {
   ASSERT_LE(newSum, testObj.GetMaxLimitVel());
   std::shared_ptr<std::vector<double>> testPos = std::make_shared<
       std::vector<double>>(3, 3);
-  ASSERT_FALSE(testObj.SetTargetSetPoint(testPos));
+  ASSERT_TRUE(testObj.SetTargetSetPoint(testPos));
 
   ASSERT_EQ((*testObj.GetTargetSetPoint())[0], (*testPos)[0]);
   ASSERT_EQ((*testObj.GetTargetSetPoint())[1], (*testPos)[1]);
@@ -338,7 +338,7 @@ TEST(setMaxLimitVel, testSetMaxLimitVel) {
  *  @param  none
  *  @return none
  */
-TEST(computePIDIteration, testcomputePIDIteration) {
+TEST(computePIDIteration,testcomputePIDIteration) {
   PIDController testObj;
   std::shared_ptr<std::vector<double>> testKp = std::make_shared<
       std::vector<double>>(3, 0.1);
@@ -360,8 +360,8 @@ TEST(computePIDIteration, testcomputePIDIteration) {
   std::shared_ptr<std::vector<double>> outVel;
 
   outVel = testObj.ComputeOutput();
-  ASSERT_EQ(0.55, (*outVel)[0]);
-  ASSERT_EQ(0.55, (*outVel)[1]);
-  ASSERT_EQ(0.55, (*outVel)[2]);
+  ASSERT_EQ(0.65, (*outVel)[0]);
+  ASSERT_EQ(0.65, (*outVel)[1]);
+  ASSERT_EQ(0.65, (*outVel)[2]);
 }
 
