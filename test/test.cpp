@@ -16,9 +16,9 @@
 // *
 // */
 #include <gtest/gtest.h>
-#include <math.h>
 #include <memory>
 #include "pid.hpp"
+#include <math.h>
 
 /**
  *  @brief  Get KP Gain Negative
@@ -57,7 +57,7 @@ TEST(getKpGainNeg, testgetKpGainNeg) {
  *  @param  none
  *  @return none
  */
-TEST(getKpGainPos, testGetKpGainPos) {
+TEST (getKpGainPos, testGetKpGainPos) {
   PIDController testObj = PIDController();
   std::shared_ptr<std::vector<double>> kp = testObj.getKpGain();
   for (auto i : *kp) {
@@ -109,7 +109,7 @@ TEST(getKiGainNeg, testgetKiGainNeg) {
  *  @param  none
  *  @return none
  */
-TEST(getKiGainPos, testGetKiGainPos) {
+TEST (getKiGainPos, testGetKiGainPos) {
   PIDController testObj = PIDController();
   std::shared_ptr<std::vector<double>> ki = testObj.getKiGain();
   for (auto i : *ki) {
@@ -161,7 +161,7 @@ TEST(getKdGainNeg, testgetKdGainNeg) {
  *  @param  none
  *  @return none
  */
-TEST(getKdGainPos, testGetKdGainPos) {
+TEST (getKdGainPos, testGetKdGainPos) {
   PIDController testObj = PIDController();
   std::shared_ptr<std::vector<double>> kd = testObj.getKdGain();
   for (auto i : *kd) {
@@ -255,36 +255,7 @@ TEST(setActVelocity, testSetActVelocity) {
 }
 
 /**
- *  @brief  Get Actual Velocity Negative Vector
- *
- *  Check -- magnitude of current vector is less than Max Limit
- *  take a negative vector
- *  Check -- it should not be able to assign a negative vector
- *  Check -- if negative, it should contain the last value
- *
- *  @param  none
- *  @return none
- */
-TEST(getActualVelNeg, testgetActualVelNeg) {
-  PIDController testObj = PIDController();
-  std::shared_ptr<std::vector<double>> av = testObj.getActualVelocity();
-  double sum = 0;
-  for (auto i : *av) {
-    sum += (i) * (i);
-  }
-  double newSum = sqrt(sum);
-  ASSERT_LE(newSum, testObj.getMaxLimitVel());
-  std::shared_ptr<std::vector<double>> testNeg = std::make_shared<
-      std::vector<double>>(3, -5);
-  ASSERT_FALSE(testObj.setActualVelocity(testNeg));
-
-  ASSERT_EQ((*testObj.getActualVelocity())[0], (*av)[0]);
-  ASSERT_EQ((*testObj.getActualVelocity())[1], (*av)[1]);
-  ASSERT_EQ((*testObj.getActualVelocity())[2], (*av)[2]);
-}
-
-/**
- *  @brief  Get Actual Velocity Positive Vector
+ *  @brief  Get Actual Velocity Vector
  *
  *  Check -- magnitude of current vector is less than Max Limit
  *  take a positive vector
@@ -310,35 +281,6 @@ TEST(getActualVelPos, testgetActualVelPos) {
   ASSERT_EQ((*testObj.getActualVelocity())[0], (*testPos)[0]);
   ASSERT_EQ((*testObj.getActualVelocity())[1], (*testPos)[1]);
   ASSERT_EQ((*testObj.getActualVelocity())[2], (*testPos)[2]);
-}
-
-/**
- *  @brief  Get Target Set Point Velocity Negative Vector
- *
- *  Check -- magnitude of current vector is less than Max Limit
- *  take a negative vector
- *  Check -- it should not be able to assign a negative vector
- *  Check -- if negative, it should contain the last value
- *
- *  @param  none
- *  @return none
- */
-TEST(getTgtSetPointNeg, testGetTgtSetPointNeg) {
-  PIDController testObj = PIDController();
-  std::shared_ptr<std::vector<double>> tpt = testObj.getTargetSetPoint();
-  double sum = 0;
-  for (auto i : *tpt) {
-    sum += (i) * (i);
-  }
-  double newSum = sqrt(sum);
-  ASSERT_LE(newSum, testObj.getMaxLimitVel());
-  std::shared_ptr<std::vector<double>> testNeg = std::make_shared<
-      std::vector<double>>(3, -5);
-  ASSERT_FALSE(testObj.setTargetSetPoint(testNeg));
-
-  ASSERT_EQ((*testObj.getTargetSetPoint())[0], (*tpt)[0]);
-  ASSERT_EQ((*testObj.getTargetSetPoint())[1], (*tpt)[1]);
-  ASSERT_EQ((*testObj.getTargetSetPoint())[2], (*tpt)[2]);
 }
 
 /**
@@ -383,7 +325,7 @@ TEST(setMaxLimitVel, testSetMaxLimitVel) {
   PIDController testObj;
   double mx = 10;
   ASSERT_TRUE(testObj.setMaxLimitVel(mx));
-  ASSERT_LT(testObj.getMaxLimitVel(), 0);
+  ASSERT_EQ(testObj.getMaxLimitVel(), 10);
 }
 
 /**
@@ -396,7 +338,7 @@ TEST(setMaxLimitVel, testSetMaxLimitVel) {
  *  @param  none
  *  @return none
  */
-TEST(computePIDIteration, testcomputePIDIteration) {
+TEST(computePIDIteration,testcomputePIDIteration) {
   PIDController testObj;
   std::shared_ptr<std::vector<double>> testKp = std::make_shared<
       std::vector<double>>(3, 0.1);
@@ -418,7 +360,8 @@ TEST(computePIDIteration, testcomputePIDIteration) {
   std::shared_ptr<std::vector<double>> outVel;
 
   outVel = testObj.computeOutput();
-  ASSERT_EQ(0.15, (*outVel)[0]);
-  ASSERT_EQ(0.15, (*outVel)[1]);
-  ASSERT_EQ(0.15, (*outVel)[2]);
+  ASSERT_EQ(0.55, (*outVel)[0]);
+  ASSERT_EQ(0.55, (*outVel)[1]);
+  ASSERT_EQ(0.55, (*outVel)[2]);
 }
+
