@@ -66,7 +66,7 @@ cd ~/workspace
 git clone --recursive https://github.com/prasheel24/TDD-G9-PID
 ```
 
-In your work directory, use cmake to create an Eclipse project for an [out-of-source build] of cpp-boilerplate
+In your work directory, use cmake to create an Eclipse project for an [out-of-source build] of TDD-G9-PID
 
 ```
 cd ~/workspace
