@@ -34,6 +34,11 @@ Test Driven development for the PID Controller designed for Acme Robotics.
 
 - [x] Accept Pull Request
 
+## Minutes of Meeting
+
+- Post design review discussion, Coveralls build was 97%.
+- Added test conditions in order to achieve 100% code coverage on Coveralls.
+
 ## Standard install via command-line
 ```
 git clone --recursive https://github.com/prasheel24/TDD-G9-PID
