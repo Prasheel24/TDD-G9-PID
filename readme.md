@@ -1,6 +1,6 @@
-[![Coverage Status](https://coveralls.io/repos/github/suyash023/cpp-boilerplate/badge.svg?branch=master)](https://coveralls.io/github/suyash023/cpp-boilerplate?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/Prasheel24/cpp-boilerplate/badge.svg?branch=master)](https://coveralls.io/github/Prasheel24/cpp-boilerplate?branch=master)
 
-[![Build Status](https://travis-ci.org/suyash023/cpp-boilerplate.svg?branch=master)](https://travis-ci.org/suyash023/cpp-boilerplate)
+[![Build Status](https://travis-ci.org/Prasheel24/cpp-boilerplate.svg?branch=master)](https://travis-ci.org/Prasheel24/cpp-boilerplate)
 
 # PID Controller - Acme Robotics
 
@@ -9,6 +9,12 @@
 Driver: Prasheel Renkuntla
 	
 Navigator: Suyash Yeotikar
+
+## Author names for Part 2
+
+Driver: Rohan Singh
+	
+Navigator: Kamakshi Jain
 
 ## Overview
 
@@ -19,6 +25,10 @@ Test Driven development for the PID Controller designed for Acme Robotics.
 1. Create skeleton for the code implementation.
 
 2. Unit Tests for the member functions of the class.
+
+3. Implementation of the Code.
+
+4. Run Unit tests.
 
 ## Standard install via command-line
 ```
