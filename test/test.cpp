@@ -418,7 +418,7 @@ TEST(computePIDIteration, testcomputePIDIteration) {
   std::shared_ptr<std::vector<double>> outVel;
 
   outVel = testObj.computeOutput();
-  ASSERT_EQ(0.15, (*outVel)[0]);
-  ASSERT_EQ(0.15, (*outVel)[1]);
-  ASSERT_EQ(0.15, (*outVel)[2]);
+  ASSERT_EQ(0.25, (*outVel)[0]);
+  ASSERT_EQ(0.25, (*outVel)[1]);
+  ASSERT_EQ(0.25, (*outVel)[2]);
 }
