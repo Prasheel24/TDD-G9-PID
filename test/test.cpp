@@ -326,6 +326,12 @@ TEST(setMaxLimitVel, testSetMaxLimitVel) {
   double mx = 10;
   ASSERT_TRUE(testObj.SetMaxLimitVel(mx));
   ASSERT_EQ(testObj.GetMaxLimitVel(), 10);
+  std::shared_ptr<std::vector<double>> testPos = std::make_shared<
+      std::vector<double>>(3, 10);
+  ASSERT_FALSE(testObj.SetActualVelocity(testPos));
+  std::shared_ptr<std::vector<double>> testPos = std::make_shared<
+      std::vector<double>>(3, 10);
+  ASSERT_FALSE(testObj.SetTargetSetPoint(testPos));
 }
 
 /**
